@@ -1,9 +1,9 @@
 const dotenv = require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const dbConnection = require("./configs/db");
-const postRoutes = require("./routers/post");
+const userRoutes = require("./routers/userRoutes");
+const productRoutes = require("./routers/productRoutes");
 
 // Application setup
 const app = express();
@@ -15,13 +15,13 @@ const MONGO_URI = process.env.MONGO_URI;
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 // MongoDB connection
 dbConnection(MONGO_URI);
 
 // Routes
-app.use("/api/v1", postRoutes);
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/products", productRoutes);
 
 // Start server
 app.listen(PORT, () => {
