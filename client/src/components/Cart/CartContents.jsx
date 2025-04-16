@@ -1,4 +1,5 @@
 import React from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const CartContents = () => {
   const cartProducts = [
