@@ -3,25 +3,19 @@ const customerMiddleware = require("../middlewares/customerMiddleware");
 const adminMiddleware = require("../middlewares/adminMiddleware");
 
 const {
+  getAllProducts,
   createNewProduct,
-  //   getAllProducts,
-  //   getProductById,
-  //   updateProduct,
-  //   deleteProduct,
-  //   searchProducts,
-  //   getProductsByCategory,
-  //   getProductsByBrand,
+  getProductById,
+  updateProduct,
+  deleteProduct,
 } = require("../controllers/productController");
 
 const router = express.Router();
 
-router.post("/", customerMiddleware, adminMiddleware, createNewProduct);
-// router.get("/", getAllProducts);
-// router.get("/:id", getProductById);
-// router.put("/:id", protect, updateProduct);
-// router.delete("/:id", protect, deleteProduct);
-// router.get("/search", searchProducts);
-// router.get("/category/:category", getProductsByCategory);
-// router.get("/brand/:brand", getProductsByBrand);
+router.post("/create", customerMiddleware, adminMiddleware, createNewProduct);
+router.get("/", customerMiddleware, adminMiddleware, getAllProducts);
+router.get("/:id", customerMiddleware, adminMiddleware, getProductById);
+router.put("/:id", customerMiddleware, adminMiddleware, updateProduct);
+router.delete("/:id", customerMiddleware, adminMiddleware, deleteProduct);
 
 module.exports = router;
